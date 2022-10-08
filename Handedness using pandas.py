@@ -1,0 +1,16 @@
+import pandas as pd
+def Handedness():
+    df = pd.read_csv("handedness.csv")
+    drop_df = df.drop("Timestamp",axis=1)
+    cross_df = pd.crosstab(drop_df.Handedness,df.Gender,margins=True)
+    print(cross_df)
+    print("Total number of females: ",cross_df.loc["All"]["Female"])
+    print("Total number of males: ",cross_df.loc["All"]["Male"])
+    print("Total number of others: ",cross_df.loc["All"]["Other"])
+    print("Total number of left handed people: ",cross_df.loc["Left Handed"]["All"])
+    print("Total number of right handed people: ",cross_df.loc["Right Handed"]["All"])
+    print("Total number of left handed female: ",cross_df.loc["Left Handed"]["Female"])
+    print("Total number of left handed male: ",cross_df.loc["Left Handed"]["Male"])
+    print("Total number of right handed female: ",cross_df.loc["Right Handed"]["Female"])
+    print("Total number of right handed male: ",cross_df.loc["Right Handed"]["Male"])
+Handedness()
